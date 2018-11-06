@@ -11,10 +11,11 @@ gc = gspread.authorize(credentials)
 
 worksheet = gc.open("WeWillAutomate").sheet1
 
-cell_list = worksheet.range('A1:C7')
+cell_list = worksheet.range('A1:A7')
+cell_values = [1,2,3,4,5,6,7]
 
-for cell in cell_list:
-    cell.value = 'Happy DeepaVali'
+for i, val in enumerate(cell_values):  #gives us a tuple of an index and value
+    cell_list[i].value = val    #use the index on cell_list and the val from cell_values
 
 # Update in batch
 worksheet.update_cells(cell_list)
